@@ -1,0 +1,36 @@
+{
+  "name": "postgen",
+  "version": "1.0.0",
+  "description": "A simple node script to convert postman collections to clean REST client libs for node.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Phara0h/Postgen.git"
+  },
+  "keywords": [
+    "postman",
+    "client",
+    "generator",
+    "rest",
+    "api",
+    "es6",
+    "class",
+    "interface"
+  ],
+  "author": "Jt Whissel",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Phara0h/Postgen/issues"
+  },
+  "homepage": "https://github.com/Phara0h/Postgen#readme",
+  "bin": {
+    "postgen": "./index.js"
+  },
+  "dependencies": {
+    "beautify": "0.0.8",
+    "postman-collection": "^3.5.1"
+  }
+}
