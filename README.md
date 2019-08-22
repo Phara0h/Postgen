@@ -27,9 +27,10 @@ postgen /path/to/postman/collection.js > YourApi.js
 ### [Wasps with Bazookas](https://github.com/Phara0h/WaspsWithBazookas) Service
 
 A postman collection of the service:
- <img src="https://i.imgur.com/SssAdP5.png" alt="https://www.npmjs.com/package/waspswithbazookas" data-canonical-src="https://i.imgur.com/SssAdP5.png" />
 
-Generated a class structure:
+ <img src="https://i.imgur.com/SssAdP5.png" alt="https://www.npmjs.com/package/waspswithbazookas" data-canonical-src="https://i.imgur.com/SssAdP5.png"  width="330"/>
+
+#### Generated a class structure:
 ```
 WaspsWithBazookas
     |
@@ -66,9 +67,10 @@ setTimeout(async ()=>{
 ### [Travelling](https://github.com/abeai/travelling) Service
 
 A postman collection of the service:
- <img src="https://i.imgur.com/2hD4oPU.png" alt="https://www.npmjs.com/package/waspswithbazookas" data-canonical-src="https://i.imgur.com/2hD4oPU.png" />
 
-Generated a class structure:
+ <img src="https://i.imgur.com/2hD4oPU.png" alt="https://www.npmjs.com/package/waspswithbazookas" data-canonical-src="https://i.imgur.com/2hD4oPU.png" width="330" />
+
+#### Generated a class structure:
 ```
 Travelling
     |
