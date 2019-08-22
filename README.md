@@ -62,7 +62,9 @@ setTimeout(async ()=>{
 },2000)
 
 ```
+#### Samples
 
+See the [samples](https://github.com/Phara0h/Postgen/blob/master/samples/) folder for the collection used and the generated API from that collection.
 
 ### [Travelling](https://github.com/abeai/travelling) Service
 
@@ -96,7 +98,9 @@ Travelling.Auth.login({
 
 ```
 
+#### Samples
 
+See the [samples](https://github.com/Phara0h/Postgen/blob/master/samples/) folder for the collection used and the generated API from that collection.
 
 ## Further Development
 The code to do the generation is just some hacky code busted out in a hour. I would love help cleaning it up and making it more feature rich.
