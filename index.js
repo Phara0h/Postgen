@@ -56,7 +56,7 @@ var getVars = function (url, body)
 {
   var vars = [...Array.from(url.variable.map(v => v.key)), ...Array.from(url.query.map(v => v.key))].join();
 
-  return (body ? 'body' + (vars.length > 0 ? ',' : '') : '') + vars;
+  return (body ? 'body' + (vars.length > 0 ? ',' : '') : '') + vars + (vars.length > 0 || body ? ',opts' : 'opts');
 }
 //
 var convertToOptions = function (request)
@@ -144,6 +144,9 @@ var genClass = function (name, item, js)
       js += `
           static async ${setMethodName(item[i].name)}(${getVars(item[i].request.url, !!item[i].request.body)}) {
               var options = ${convertToOptions(item[i].request)};
+              if(opts) {
+                options = Object.assign(options, opts);
+              }
               return await fasq.request(options)
           }
       `;
