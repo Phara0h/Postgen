@@ -1,11 +1,11 @@
 {
   "name": "postgen",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A simple node script to convert postman collections to clean REST client libs for node.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postversion": "git commit && git push && git push --tags"
+    "postversion": "git commit -a && git push && git push --tags"
   },
   "repository": {
     "type": "git",
