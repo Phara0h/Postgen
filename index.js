@@ -12,14 +12,29 @@ var jsFile = `
 const fasq = require('fasquest');
 var hostUrl = '';
 `
-var parseHeader = function (header)
+
+
+var parseHeader = function (body,header = [])
 {
-  var params = '';
+  var params = body.length > 0 ? ',' : '';
   for (var i = 0; i < header.length; i++)
   {
     if (header[i].key == 'Content-Type' && header[i].value == 'application/json')
     {
-      params += 'json:true'
+      params += 'json:true,'
+    }
+    else if (header[i].key == 'Authorization' && header[i].value == 'Bearer')
+    {
+      params += `authorization:{
+        bearer: authorization_bearer
+      },`
+    }
+    else if (header[i].key == 'Authorization' && header[i].value == 'Basic')
+    {
+      params += `authorization:{
+        client: authorization_client,
+        secret: authorization_secret
+      },`
     }
   }
 
@@ -38,8 +53,7 @@ var parseUrl = function (url)
 
   var uri = url.path.join('/')
   var params = `uri: hostUrl+"/" + ` + '`' + uri + '`'
-
-
+    url.query = url.query.filter(v=>v.key)
   if (url.query.length > 0)
   {
     params += ', qs: { '
@@ -49,20 +63,84 @@ var parseUrl = function (url)
     }
     params += '}'
   }
+
   return params;
 }
 
-var getVars = function (url, body)
+var getVars = function (url, body, headers = [])
 {
-  var vars = [...Array.from(url.variable.map(v => v.key)), ...Array.from(url.query.map(v => v.key))].join();
+  var vars = [];
 
-  return (body ? 'body' + (vars.length > 0 ? ',' : '') : '') + vars + (vars.length > 0 || body ? ',opts' : 'opts');
+  var urlVars = Array.from(url.variable.map(v => v.key.length > 0 ? v.key : null)).filter(v=>v);
+  if(urlVars.length > 0) {
+    vars = [...vars, ...urlVars];
+  }
+
+  var queryVars = (Object.keys(url.query).length > 0 ? Array.from(url.query.map(v => v.key.length > 0 ? v.key : null)): []).filter(v=>v);
+  if(queryVars.length > 0) {
+    vars = [...vars, ...queryVars];
+  }
+
+//console.log(urlVars, queryVars)
+
+  var bodyString = '';
+  if(body) {
+    if(body.mode == 'raw') {
+       bodyString = 'body'
+    }
+    else if(body.mode == 'urlencoded') {
+      vars = [...(vars.length> 0 ? vars: []),...Array.from(body.urlencoded.map(v => v.key.length > 0 ? v.key : null)).filter(v=>v)];
+    }
+  }
+
+  var varsString = bodyString.length > 0 && vars.length > 0 ? ','+vars.join() : vars.join();
+
+  var headerString = '';
+var headerVars = []
+  if(headers.length > 0) {
+
+
+    for (var i = 0; i < headers.length; i++)
+    {
+      if (headers[i].key == 'Authorization' && headers[i].value == 'Bearer')
+      {
+        headerVars.push(`authorization_bearer`)
+      }
+      else if (headers[i].key == 'Authorization' && headers[i].value == 'Basic')
+      {
+        headerVars.push('authorization_client');
+        headerVars.push('authorization_secret');
+      }
+    }
+
+    headerString +=  ((vars.length > 0 || bodyString.length > 0) && headerVars.length > 0 ? ',' : '') + headerVars.join();
+  }
+
+  return  bodyString + varsString + headerString +(vars.length > 0 || body || headerVars.length > 0 ? ',opts' : 'opts');
 }
+
 //
 var convertToOptions = function (request)
 {
+  var body = request.body;
+  if(body) {
+    if(body.mode == 'raw') {
+       body = 'body'
+    }
+    else if(body.mode == 'urlencoded') {
+      body = `form: {
+        ${Array.from(request.body.urlencoded.map(v => v.key.length > 0 ? v.key : null)).filter(v=>v).join()}
+      }`
+    }
+    else {
+          body = ''
+    }
+
+  } else {
+    body = ''
+  }
   var options = `{
-    method: '${request.method}', resolveWithFullResponse:true, simple: false, ${parseUrl(request.url)}, ${request.body ? 'body,' : ''} ${request.header ? parseHeader(request.header) + ',' : ''}
+    method: '${request.method}', resolveWithFullResponse:true, simple: false, ${parseUrl(request.url)}, ${body} ${parseHeader(body || '',request.header)}
   }`;
 
   return options;
@@ -141,8 +219,9 @@ var genClass = function (name, item, js)
 
     if (!item[i].item)
     {
+      //console.log(item[i].request.header)
       js += `
-          static async ${setMethodName(item[i].name)}(${getVars(item[i].request.url, !!item[i].request.body)}) {
+          static async ${setMethodName(item[i].name)}(${getVars(item[i].request.url, item[i].request.body, item[i].request.header || [])}) {
               var options = ${convertToOptions(item[i].request)};
               if(opts) {
                 options = Object.assign(options, opts);
@@ -153,17 +232,12 @@ var genClass = function (name, item, js)
     }
     else
     {
-      if (!item[i].name)
-      {
-        console.log(item[i])
-      }
       js += `
         static get ${setClassName(item[i].name)}() {
           return ${setClassName(item[i].name)};
         }
       `
       newClasses.push(item[i]);
-
     }
   }
   js += `}`
@@ -187,7 +261,7 @@ jsFile += `
     return ${setClassName(collection.info.name)};
   }
 `
-//allNewClasses.join()
+allNewClasses.join()
 console.log(beautify(jsFile,
 {
   format: 'js'
