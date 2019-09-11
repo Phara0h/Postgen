@@ -181,8 +181,9 @@ jsFile += genClass(collection.info.name, collection.item, '')
 
 jsFile += `
   module.exports= function(host){
-    hostUrl = host;
-
+    if(host) {
+      hostUrl = host;
+    }
     return ${setClassName(collection.info.name)};
   }
 `

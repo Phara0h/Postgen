@@ -2,9 +2,15 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.2.0](https://github.com/Phara0h/Postgen/compare/v1.1.5...v1.2.0)
+
+> 11 September 2019
+
 #### [v1.1.5](https://github.com/Phara0h/Postgen/compare/v1.1.4...v1.1.5)
 
 > 30 August 2019
+
+- 1.1.5 added changelog template [`262b00c`](https://github.com/Phara0h/Postgen/commit/262b00c7bf2a6cf11c2427ea1beca5ff41714fff)
 
 #### [v1.1.4](https://github.com/Phara0h/Postgen/compare/v1.1.3...v1.1.4)
 
