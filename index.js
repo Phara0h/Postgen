@@ -140,13 +140,9 @@ var getDocs = function (name, description, url, body, headers = [])
     if(body.mode == 'raw') {
        docs +=
   `
-  * @param {Object} body `
-  docs += beautify(body.raw,{format: 'json'}).replace(/\n/g, '\n  * ');
-    }
-    else if(body.mode == 'urlencoded') {
-      urlVars = Array.from(body.urlencoded.map(v => v.key.length > 0 ? v.key : null)).filter(v=>v);
-    }
+  * @param {Object} body`
   }
+}
 
   var varsString = '';
 
@@ -193,6 +189,24 @@ if(urlVars.length > 0) {
   * @param {string} authorization_client username/client_id
   * @param {string} authorization_secret password/client_secret`
       }
+    }
+  }
+
+
+
+  if(body) {
+    if(body.mode == 'raw') {
+       docs +=
+  `
+  * @example
+  * body
+  * \`\`\`js
+  * `
+  docs += beautify(body.raw,{format: 'json'}).replace(/\n/g, '\n * ');
+  docs += '\n  * ```';
+    }
+    else if(body.mode == 'urlencoded') {
+      urlVars = Array.from(body.urlencoded.map(v => v.key.length > 0 ? v.key : null)).filter(v=>v);
     }
   }
   docs +=
