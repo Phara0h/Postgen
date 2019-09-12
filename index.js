@@ -119,6 +119,90 @@ var headerVars = []
   return  bodyString + varsString + headerString +(vars.length > 0 || body || headerVars.length > 0 ? ',opts' : 'opts');
 }
 
+var getDocs = function (name, description, url, body, headers = [])
+{
+  var docs =
+  `
+/**
+  * ${setMethodName(name)} - ${description}`
+
+  var vars = [];
+
+  var pathVars = Array.from(url.variable.map(v => v.key.length > 0 ? v.key : null)).filter(v=>v);
+  var queryVars = (Object.keys(url.query).length > 0 ? Array.from(url.query.map(v => v.key.length > 0 ? v.key : null)): []).filter(v=>v);
+  var urlVars = [];
+
+//console.log(urlVars, queryVars)
+
+  var bodyString = '';
+
+  if(body) {
+    if(body.mode == 'raw') {
+       docs +=
+  `
+  * @param {Object} body `
+  docs += beautify(body.raw,{format: 'json'}).replace(/\n/g, '\n  * ');
+    }
+    else if(body.mode == 'urlencoded') {
+      urlVars = Array.from(body.urlencoded.map(v => v.key.length > 0 ? v.key : null)).filter(v=>v);
+    }
+  }
+
+  var varsString = '';
+
+for (var i = 0; i < url.variable.length; i++) {
+  if(pathVars.indexOf(url.variable[i].key) > -1){
+  docs +=
+  `
+  * @param {${url.variable[i].type || 'any'}} ${url.variable[i].key} ${url.variable[i].description ? url.variable[i].description.content : ''} ${url.variable[i].value? '(example: '+url.variable[i].value+')': ''}`
+}
+}
+for (var i = 0; i < url.query.length; i++) {
+  if(queryVars.indexOf(url.query[i].key) > -1){
+  docs +=
+  `
+  * @param {${url.query[i].type || 'any'}} ${url.query[i].key} ${url.query[i].description ? url.query[i].description.content : ''} ${url.query[i].value? '(example: '+url.query[i].value+')': ''}`
+  }
+}
+if(urlVars.length > 0) {
+  if(urlVars.indexOf(body.urlencoded[i].key) > -1){
+  for (var i = 0; i < body.urlencoded.length; i++) {
+    docs +=
+  `
+  * @param {${body.urlencoded[i].type|| 'any'}} ${body.urlencoded[i].key} ${body.urlencoded[i].description ? body.urlencoded[i].description.content : ''} ${body.urlencoded[i].value? '(example: '+body.urlencoded[i].value+')': ''}`
+  }
+}
+
+}
+
+  if(headers.length > 0) {
+
+
+    for (var i = 0; i < headers.length; i++)
+    {
+      if (headers[i].key == 'Authorization' && headers[i].value == 'Bearer')
+      {
+        docs +=
+  `
+  * @param {string} authorization_bearer ${headers[i].description.content}`
+      }
+      else if (headers[i].key == 'Authorization' && headers[i].value == 'Basic')
+      {
+        docs +=
+  `
+  * @param {string} authorization_client username/client_id
+  * @param {string} authorization_secret password/client_secret`
+      }
+    }
+  }
+  docs +=
+  `
+  */`
+  //console.log(docs)
+  return  docs;
+}
+
+
 //
 var convertToOptions = function (request)
 {
@@ -204,13 +288,20 @@ const keysToCamel = function (o)
   return o;
 };
 
-var genClass = function (name, item, js)
+var genClass = function (name, item, js, classObj)
 {
 
   var classEnd = false;
   //allNewClasses.push(setClassName(name));
   var newClasses = [];
-  js += `class ${setClassName(name)} {
+  js += `
+/**
+  * ${classObj.description ? classObj.description.content.replace(/\n/g,
+  `
+  * `).replace(/\t/g,
+  ` `) : ''}
+ */
+class ${setClassName(name)} {
     constructor() {
     }
     `
@@ -219,8 +310,9 @@ var genClass = function (name, item, js)
 
     if (!item[i].item)
     {
-      //console.log(item[i].request.header)
+      //console.log(item[i])
       js += `
+          ${getDocs(item[i].name,item[i].request.description ? item[i].request.description.content : '', item[i].request.url, item[i].request.body, item[i].request.header || [])}
           static async ${setMethodName(item[i].name)}(${getVars(item[i].request.url, item[i].request.body, item[i].request.header || [])}) {
               var options = ${convertToOptions(item[i].request)};
               if(opts) {
@@ -244,14 +336,14 @@ var genClass = function (name, item, js)
 
   for (var i = 0; i < newClasses.length; i++)
   {
-    js += genClass(newClasses[i].name, newClasses[i].item, '');
+    js += genClass(newClasses[i].name, newClasses[i].item, '', newClasses[i]);
   }
 
   return js;
 
 }
 
-jsFile += genClass(collection.info.name, collection.item, '')
+jsFile += genClass(collection.info.name, collection.item, '', collection.info)
 
 jsFile += `
   module.exports= function(host){
