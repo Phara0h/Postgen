@@ -31,10 +31,10 @@ var parseHeader = function (body,header = [])
     }
     else if (header[i].key == 'Authorization' && header[i].value == 'Basic')
     {
-      params += `authorization:{
+      params += `authorization: {basic: {
         client: authorization_client,
         secret: authorization_secret
-      },`
+      }},`
     }
   }
 
