@@ -8,6 +8,9 @@ const beautify = require('beautify');
 var collection = new Collection(JSON.parse(fs.readFileSync(process.argv[2]).toString())).toJSON();
 var allNewClasses = [];
 
+var parentName = ''
+
+
 var jsFile = `
 const fasq = require('fasquest');
 var hostUrl = '';
@@ -251,9 +254,9 @@ var setMethodName = function (n)
   return toCamel(mn.replace(/:/g, '').replace(/[ \/-]/g, '_').toLowerCase())
 }
 
-var setClassName = function (n)
+var setClassName = function (n, parent)
 {
-  var cn = '' + n;
+  var cn = (parent && parent != parentName ? parent+' ' : '') + n;
   var name = toCamel(cn.replace(/ /g, '_').toLowerCase());
   return name.charAt(0).toUpperCase() + name.slice(1);
 }
@@ -302,7 +305,7 @@ const keysToCamel = function (o)
   return o;
 };
 
-var genClass = function (name, item, js, classObj)
+var genClass = function (name, item, js, classObj, parent)
 {
 
   var classEnd = false;
@@ -315,7 +318,7 @@ var genClass = function (name, item, js, classObj)
   * `).replace(/\t/g,
   ` `) : ''}
  */
-class ${setClassName(name)} {
+class ${setClassName(name, parent)} {
     constructor() {
     }
     `
@@ -340,7 +343,7 @@ class ${setClassName(name)} {
     {
       js += `
         static get ${setClassName(item[i].name)}() {
-          return ${setClassName(item[i].name)};
+          return ${setClassName(item[i].name, name)};
         }
       `
       newClasses.push(item[i]);
@@ -350,12 +353,14 @@ class ${setClassName(name)} {
 
   for (var i = 0; i < newClasses.length; i++)
   {
-    js += genClass(newClasses[i].name, newClasses[i].item, '', newClasses[i]);
+    js += genClass(newClasses[i].name, newClasses[i].item, '', newClasses[i], name);
   }
 
   return js;
 
 }
+
+parentName = collection.info.name;
 
 jsFile += genClass(collection.info.name, collection.item, '', collection.info)
 
