@@ -1,6 +1,6 @@
 {
   "name": "postgen",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A simple node script to convert postman collections to clean REST client libs for node.",
   "main": "index.js",
   "scripts": {
