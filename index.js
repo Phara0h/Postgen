@@ -309,7 +309,7 @@ var genClass = function (name, item, js, classObj, parent)
 {
 
   var classEnd = false;
-  //allNewClasses.push(setClassName(name));
+  allNewClasses.push(setClassName(name, parent));
   var newClasses = [];
   js += `
 /**
@@ -369,10 +369,10 @@ jsFile += `
     if(host) {
       hostUrl = host;
     }
-    return ${setClassName(collection.info.name)};
+    return {${allNewClasses.join()}};
   }
 `
-allNewClasses.join()
+
 console.log(beautify(jsFile,
 {
   format: 'js'
