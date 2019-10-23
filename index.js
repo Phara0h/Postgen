@@ -12,6 +12,8 @@ var parentName = ''
 
 
 var jsFile = `
+'use strict';
+
 const fasq = require('fasquest');
 var hostUrl = '';
 `
@@ -256,8 +258,8 @@ var setMethodName = function (n)
 
 var setClassName = function (n, parent)
 {
-  var cn = (parent && parent != parentName ? parent+' ' : '') + n;
-  var name = toCamel(cn.replace(/ /g, '_').toLowerCase());
+  var cn = (parent && parent != parentName ? parent+' ' : '') + n.charAt(0).toUpperCase() + n.slice(1);
+  var name = toCamel(cn.replace(/ /g, '_').toLowerCase())
   return name.charAt(0).toUpperCase() + name.slice(1);
 }
 const toCamel = (s) =>
@@ -343,7 +345,7 @@ class ${setClassName(name, parent)} {
     {
       js += `
         static get ${setClassName(item[i].name)}() {
-          return ${setClassName(item[i].name, name)};
+          return ${setClassName( name != parentName ? name+'_'+item[i].name : item[i].name, parent)};
         }
       `
       newClasses.push(item[i]);
@@ -353,7 +355,8 @@ class ${setClassName(name, parent)} {
 
   for (var i = 0; i < newClasses.length; i++)
   {
-    js += genClass(newClasses[i].name, newClasses[i].item, '', newClasses[i], name);
+    var parNam = parent && parent != parentName ? (parent.charAt(0).toUpperCase() + parent.slice(1))+'_'+(name.charAt(0).toUpperCase() + name.slice(1)) : name;
+    js += genClass(newClasses[i].name, newClasses[i].item, '', newClasses[i],parNam);
   }
 
   return js;
