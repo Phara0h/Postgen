@@ -32,7 +32,9 @@
     "postgen": "./index.js"
   },
   "dependencies": {
+    "auto-changelog": "^1.16.1",
     "beautify": "0.0.8",
+    "fasquest": "^1.2.3",
     "postman-collection": "^3.5.1"
   }
 }

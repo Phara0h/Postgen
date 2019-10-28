@@ -13,8 +13,12 @@ var parentName = ''
 
 var jsFile = `
 'use strict';
+`;
 
-const fasq = require('fasquest');
+jsFile += fs.readFileSync('node_modules/fasquest/index.js', 'utf8');
+
+jsFile +=`
+const fasq = new Fasquest();
 var hostUrl = '';
 `
 
