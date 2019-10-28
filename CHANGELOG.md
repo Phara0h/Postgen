@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [v3.1.0](https://github.com/Phara0h/Postgen/compare/v3.0.0...v3.1.0)
+#### [v3.2.0](https://github.com/Phara0h/Postgen/compare/v3.0.0...v3.2.0)
 
 > 28 October 2019
 
