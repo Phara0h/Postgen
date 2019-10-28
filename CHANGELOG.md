@@ -2,9 +2,94 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v3.1.0](https://github.com/Phara0h/Postgen/compare/v3.0.0...v3.1.0)
+
+> 28 October 2019
+
+- Updated to give sdk a single file without external dependencies [`e808832`](https://github.com/Phara0h/Postgen/commit/e8088327e427dffba3c90cea1d42c45f383e0235)
+
+### [v3.0.0](https://github.com/Phara0h/Postgen/compare/v2.0.1...v3.0.0)
+
+> 23 October 2019
+
+- Changed the class names to be more descriptive when 2+ levels deep [`871029e`](https://github.com/Phara0h/Postgen/commit/871029ebebfe555140795f9797d844bca8753870)
+
+#### [v2.0.1](https://github.com/Phara0h/Postgen/compare/v2.0.0...v2.0.1)
+
+> 3 October 2019
+
+- Exports all classes now instead of just the parent class [`937b660`](https://github.com/Phara0h/Postgen/commit/937b660c65ae530424433aac2cf4a3a0d8b79cde)
+- Exports all classes now instead of just the parent class [`be5b330`](https://github.com/Phara0h/Postgen/commit/be5b330019a4720be30d37dedc71b5407d568fbc)
+
+### [v2.0.0](https://github.com/Phara0h/Postgen/compare/v1.8.0...v2.0.0)
+
+> 3 October 2019
+
+- Exports all classes now instead of just the parent class [`29794d1`](https://github.com/Phara0h/Postgen/commit/29794d14b2d94cb0d95bac716078fa56f7a0da1f)
+
+#### [v1.8.0](https://github.com/Phara0h/Postgen/compare/v1.7.1...v1.8.0)
+
+> 16 September 2019
+
+- Added parent names to class names [`60048da`](https://github.com/Phara0h/Postgen/commit/60048dad9952e2a56a07d41a83472e9578c170ca)
+- 1.8.0 Added parent names to class names [`1ee58d3`](https://github.com/Phara0h/Postgen/commit/1ee58d331eda82310ae94ed8f5eaac9405941b28)
+
+#### [v1.7.1](https://github.com/Phara0h/Postgen/compare/v1.7.0...v1.7.1)
+
+> 12 September 2019
+
+- fixed basic auth [`b5d1187`](https://github.com/Phara0h/Postgen/commit/b5d118751f662d71915a53c3bca09e16ad548981)
+
+#### [v1.7.0](https://github.com/Phara0h/Postgen/compare/v1.6.0...v1.7.0)
+
+> 12 September 2019
+
+- Added markdown js hooks for body [`68b02af`](https://github.com/Phara0h/Postgen/commit/68b02af07aa148d5093faa185d1c2dfd5f10102e)
+- 1.7.0 Added markdown js hooks for body [`bd57a21`](https://github.com/Phara0h/Postgen/commit/bd57a21fc707332406e41d1af19071f6f2efcf78)
+
+#### [v1.6.0](https://github.com/Phara0h/Postgen/compare/v1.5.3...v1.6.0)
+
+> 12 September 2019
+
+-  Added jsdocs [`45205c0`](https://github.com/Phara0h/Postgen/commit/45205c0008a5f938b4f04324312a97512cb92177)
+- 1.6.0 Added jsdocs [`c2d4d2a`](https://github.com/Phara0h/Postgen/commit/c2d4d2ad91fafaa40970880162b24fc7c5d1af8e)
+
+#### [v1.5.3](https://github.com/Phara0h/Postgen/compare/v1.5.2...v1.5.3)
+
+> 12 September 2019
+
+- 1.5.3 Added jsdocs [`098d547`](https://github.com/Phara0h/Postgen/commit/098d547bffda7cfe5a43131b91f4bfdca9e8893d)
+
+#### [v1.5.2](https://github.com/Phara0h/Postgen/compare/v1.5.0...v1.5.2)
+
+> 11 September 2019
+
+- Added auth basic, auth bearer and urlxml params [`f2ba00c`](https://github.com/Phara0h/Postgen/commit/f2ba00c3e8117889df2b41c1c0cdc9b9a8387015)
+- 1.5.2 Added auth basic, auth bearer and urlxml params [`d2fe94a`](https://github.com/Phara0h/Postgen/commit/d2fe94a16c799b0ec1fba2bfd2cdde7c3fb862e0)
+
+#### [v1.5.0](https://github.com/Phara0h/Postgen/compare/v1.4.0...v1.5.0)
+
+> 11 September 2019
+
+- 1.5.0 Added auth basic, auth bearer and urlxml params [`0e03d0b`](https://github.com/Phara0h/Postgen/commit/0e03d0b12967993e3cfc26aee6e378005a1d08a4)
+
+#### [v1.4.0](https://github.com/Phara0h/Postgen/compare/v1.3.0...v1.4.0)
+
+> 11 September 2019
+
+- 1.4.0 Added auth basic, auth bearer and urlxml params [`473800e`](https://github.com/Phara0h/Postgen/commit/473800e8fe99f18dcca7ce9d3e3c13ae30b00c1b)
+
+#### [v1.3.0](https://github.com/Phara0h/Postgen/compare/v1.2.0...v1.3.0)
+
+> 11 September 2019
+
+- 1.3.0 Added auth basic, auth bearer and urlxml params [`1b62b39`](https://github.com/Phara0h/Postgen/commit/1b62b393dcb655c9ca25723bea3456c2c0256d8e)
+
 #### [v1.2.0](https://github.com/Phara0h/Postgen/compare/v1.1.5...v1.2.0)
 
 > 11 September 2019
+
+- 1.2.0 added check for host in SDK init [`4214bab`](https://github.com/Phara0h/Postgen/commit/4214bab3bbf8f0394fa5a368cd008cd2afce1889)
 
 #### [v1.1.5](https://github.com/Phara0h/Postgen/compare/v1.1.4...v1.1.5)
 
