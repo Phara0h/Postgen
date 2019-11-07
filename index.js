@@ -326,9 +326,9 @@ var genClass = function (name, item, js, classObj, parent)
   ` `) : ''}
  */
 class ${setClassName(name, parent)} {
-    constructor() {
-    `
-    var getPathObject = 'this._postgenClassUrls = {';
+    constructor() {}`
+    var getPathObject = `static get _postgenClassUrls() {
+        return {`;
 
   var classFunctions = '';
   for (var i = item.length - 1; i >= 0; i--)
@@ -336,7 +336,7 @@ class ${setClassName(name, parent)} {
 
     if (!item[i].item)
     {
-      getPathObject += `${setMethodName(item[i].name.toLowerCase())}:'${item[i].request.url.path.join('/')}',`
+      getPathObject += `${setMethodName(item[i].name).toLowerCase()}:'${item[i].request.url.path.join('/')}',`
       //console.log(item[i])
       classFunctions += `
           ${getDocs(item[i].name,item[i].request.description ? item[i].request.description.content : '', item[i].request.url, item[i].request.body, item[i].request.header || [])}
@@ -363,7 +363,7 @@ class ${setClassName(name, parent)} {
   }
   js += getPathObject + `};
   }
-  getFunctionsPath(name) {
+  static getFunctionsPath(name) {
     return this._postgenClassUrls[name.toLowerCase()];
   }
 
