@@ -133,7 +133,8 @@ var getDocs = function (name, description, url, body, headers = [])
   var docs =
   `
 /**
-  * ${setMethodName(name)} - ${description}`
+  * ${setMethodName(name)} - ${description}
+  * Path: ${url.path.join('/')}`
 
   var vars = [];
 
@@ -326,15 +327,18 @@ var genClass = function (name, item, js, classObj, parent)
  */
 class ${setClassName(name, parent)} {
     constructor() {
-    }
     `
+    var getPathObject = 'this._postgenClassUrls = {';
+
+  var classFunctions = '';
   for (var i = item.length - 1; i >= 0; i--)
   {
 
     if (!item[i].item)
     {
+      getPathObject += `${setMethodName(item[i].name.toLowerCase())}:'${item[i].request.url.path.join('/')}',`
       //console.log(item[i])
-      js += `
+      classFunctions += `
           ${getDocs(item[i].name,item[i].request.description ? item[i].request.description.content : '', item[i].request.url, item[i].request.body, item[i].request.header || [])}
           static async ${setMethodName(item[i].name)}(${getVars(item[i].request.url, item[i].request.body, item[i].request.header || [])}) {
               var options = ${convertToOptions(item[i].request)};
@@ -344,10 +348,12 @@ class ${setClassName(name, parent)} {
               return await fasq.request(options)
           }
       `;
+
+
     }
     else
     {
-      js += `
+      classFunctions += `
         static get ${setClassName(item[i].name)}() {
           return ${setClassName( name != parentName ? name+'_'+item[i].name : item[i].name, parent)};
         }
@@ -355,6 +361,15 @@ class ${setClassName(name, parent)} {
       newClasses.push(item[i]);
     }
   }
+  js += getPathObject + `};
+  }
+  getFunctionsPath(name) {
+    return this._postgenClassUrls[name.toLowerCase()];
+  }
+
+  ${classFunctions}
+  `;
+
   js += `}`
 
   for (var i = 0; i < newClasses.length; i++)
