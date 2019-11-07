@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v3.4.0](https://github.com/Phara0h/Postgen/compare/v3.3.0...v3.4.0)
+
+> 7 November 2019
+
+- Changed getFunctionsPath to static [`ffe1ade`](https://github.com/Phara0h/Postgen/commit/ffe1ade9f3643f70840cea9bb6891093f421c3e9)
+
 #### [v3.3.0](https://github.com/Phara0h/Postgen/compare/v3.2.0...v3.3.0)
 
 > 7 November 2019
