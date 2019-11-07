@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v3.3.0](https://github.com/Phara0h/Postgen/compare/v3.2.0...v3.3.0)
+
+> 7 November 2019
+
+- Added 'getFunctionsPath' function to get the url path of the function [`e635a97`](https://github.com/Phara0h/Postgen/commit/e635a97c75800b3c353d2bd9de6ba182e4dce89c)
+
 #### [v3.2.0](https://github.com/Phara0h/Postgen/compare/v3.0.0...v3.2.0)
 
 > 28 October 2019
