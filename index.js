@@ -2,7 +2,7 @@
 
 const fs = require('fs') // needed to read JSON file from disk
 const Collection = require('postman-collection').Collection;
-const beautify = require('beautify');
+const prettier = require("prettier");
 
 // Load a collection to memory from a JSON file on disk (say, sample-collection.json)
 var collection = new Collection(JSON.parse(fs.readFileSync(process.argv[2]).toString())).toJSON();
@@ -134,6 +134,7 @@ var getDocs = function (name, description, url, body, headers = [])
   `
 /**
   * ${setMethodName(name)} - ${description}
+  *
   * Path: ${url.path.join('/')}`
 
   var vars = [];
@@ -151,8 +152,8 @@ var getDocs = function (name, description, url, body, headers = [])
        docs +=
   `
   * @param {Object} body`
+    }
   }
-}
 
   var varsString = '';
 
@@ -395,7 +396,7 @@ jsFile += `
   }
 `
 
-console.log(beautify(jsFile,
-{
-  format: 'js'
+console.log(prettier.format(jsFile, {
+  tabWidth: 2,
+  singleQuote: true
 }));
