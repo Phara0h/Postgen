@@ -249,7 +249,7 @@ var convertToOptions = function (request)
     body = ''
   }
   var options = `{
-    method: '${request.method}', resolveWithFullResponse:true, simple: false, ${parseUrl(request.url)}, ${body} ${parseHeader(body || '',request.header)}
+    method: '${request.method}', simple: false, ${parseUrl(request.url)}, ${body} ${parseHeader(body || '',request.header)}
   }`;
 
   return options;

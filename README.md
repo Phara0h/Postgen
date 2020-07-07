@@ -53,12 +53,12 @@ WWB.Hive.HivePoke({
   "d": "1",
   "target": "http://127.0.0.1:4269/hive/status"
 }).then(response=>{
-  console.log(response.body)
+  console.log(response)
 })
 
 // Wait 2 seconds and show the report
 setTimeout(async ()=>{
-  console.log((await WWB.Hive.HiveStatusReport()).body)
+  console.log((await WWB.Hive.HiveStatusReport()))
 },2000)
 
 ```
@@ -93,7 +93,7 @@ Travelling.Auth.login({
   "username":"test",
   "password":"password1234"
 }).then(response=>{
-  console.log(response.body)
+  console.log(response)
 })
 
 ```
