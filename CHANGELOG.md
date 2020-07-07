@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+### [v4.0.0](https://github.com/Phara0h/Postgen/compare/v3.5.0...v4.0.0)
+
+> 7 July 2020
+
+- Respond with full request is node default false. Should return body instead of full response. [`28a4423`](https://github.com/Phara0h/Postgen/commit/28a44231afda2eec562c7c8cf97f86b59cc32791)
+
 #### [v3.5.0](https://github.com/Phara0h/Postgen/compare/v3.4.0...v3.5.0)
 
 > 7 July 2020
