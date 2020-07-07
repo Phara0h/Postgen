@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v3.5.0](https://github.com/Phara0h/Postgen/compare/v3.4.0...v3.5.0)
+
+> 7 July 2020
+
+- Updated to use prettier instead of beautify (handles MD inside postman description) [`5c7e407`](https://github.com/Phara0h/Postgen/commit/5c7e407fe4dac811456606797c63747dd2be887f)
+
 #### [v3.4.0](https://github.com/Phara0h/Postgen/compare/v3.3.0...v3.4.0)
 
 > 7 November 2019
