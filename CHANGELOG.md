@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v4.1.1](https://github.com/Phara0h/Postgen/compare/v4.1.0...v4.1.1)
+
+> 8 July 2020
+
+- Removed node_modules folder XD [`eb0c987`](https://github.com/Phara0h/Postgen/commit/eb0c9878d0d1a83fd3b994536603249f693d74f4)
+- Delete .DS_Store [`5f50131`](https://github.com/Phara0h/Postgen/commit/5f50131914452e616238477f2ab61f38e7686947)
+
 #### [v4.1.0](https://github.com/Phara0h/Postgen/compare/v4.0.0...v4.1.0)
 
 > 8 July 2020
