@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v4.1.2](https://github.com/Phara0h/Postgen/compare/v4.1.1...v4.1.2)
+
+> 8 July 2020
+
+- Fixed script that kept adding node_modules [`a094510`](https://github.com/Phara0h/Postgen/commit/a094510d7cdaf609132926f8904185f967033fa7)
+
 #### [v4.1.1](https://github.com/Phara0h/Postgen/compare/v4.1.0...v4.1.1)
 
 > 8 July 2020
