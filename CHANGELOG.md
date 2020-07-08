@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v4.1.5](https://github.com/Phara0h/Postgen/compare/v4.1.4...v4.1.5)
+
+> 8 July 2020
+
+- Update package.json [`1204d44`](https://github.com/Phara0h/Postgen/commit/1204d44c078ef926d251be11425ed6f11af2cc31)
+
 #### [v4.1.4](https://github.com/Phara0h/Postgen/compare/v4.1.3...v4.1.4)
 
 > 8 July 2020
