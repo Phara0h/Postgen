@@ -388,6 +388,17 @@ parentName = collection.info.name;
 
 jsFile += genClass(collection.info.name, collection.item, '', collection.info)
 
+if(web) {
+jsFile += `
+  export default function(host){
+    if(host) {
+      hostUrl = host;
+    }
+    return {${allNewClasses.join()}};
+  }
+`
+}
+else {
 jsFile += `
   module.exports= function(host){
     if(host) {
@@ -396,6 +407,8 @@ jsFile += `
     return {${allNewClasses.join()}};
   }
 `
+}
+
 
 console.log(prettier.format(jsFile, {
   tabWidth: 2,
