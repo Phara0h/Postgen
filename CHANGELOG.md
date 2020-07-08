@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v4.1.0](https://github.com/Phara0h/Postgen/compare/v4.0.0...v4.1.0)
+
+> 8 July 2020
+
+- Added `web` param to generate SDK for the browser! [`7ee85db`](https://github.com/Phara0h/Postgen/commit/7ee85db489047a48394aae75499e369d6bc198d8)
+
 ### [v4.0.0](https://github.com/Phara0h/Postgen/compare/v3.5.0...v4.0.0)
 
 > 7 July 2020
