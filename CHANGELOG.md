@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v4.1.4](https://github.com/Phara0h/Postgen/compare/v4.1.3...v4.1.4)
+
+> 8 July 2020
+
+- bump fasquest [`b3aef48`](https://github.com/Phara0h/Postgen/commit/b3aef481a119452bd39292903f51b1de2aba12f7)
+
 #### [v4.1.3](https://github.com/Phara0h/Postgen/compare/v4.1.2...v4.1.3)
 
 > 8 July 2020
