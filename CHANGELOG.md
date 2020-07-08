@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v4.1.3](https://github.com/Phara0h/Postgen/compare/v4.1.2...v4.1.3)
+
+> 8 July 2020
+
+- Fixed web export [`8d8bbde`](https://github.com/Phara0h/Postgen/commit/8d8bbde2eb8c06d5beb79b418d0d5aa5005e5451)
+
 #### [v4.1.2](https://github.com/Phara0h/Postgen/compare/v4.1.1...v4.1.2)
 
 > 8 July 2020
