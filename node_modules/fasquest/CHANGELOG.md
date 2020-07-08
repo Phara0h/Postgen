@@ -2,11 +2,18 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+### [v2.0.0](https://github.com/Phara0h/Fasquest/compare/v1.2.3...v2.0.0)
+
+> 8 July 2020
+
+- Added browser es module version [`c54e7cc`](https://github.com/Phara0h/Fasquest/commit/c54e7ccdf57f784507c3a5f9f7e87c374fcc6b44)
+
 #### [v1.2.3](https://github.com/Phara0h/Fasquest/compare/v1.2.2...v1.2.3)
 
 > 23 October 2019
 
 - Protect against response body not being able to be parsed [`#1`](https://github.com/Phara0h/Fasquest/pull/1)
+- 1.2.3 json empty body fix [`b6f1f07`](https://github.com/Phara0h/Fasquest/commit/b6f1f0744775ea436048617edbe318a7777cf765)
 
 #### [v1.2.2](https://github.com/Phara0h/Fasquest/compare/v1.2.1...v1.2.2)
 

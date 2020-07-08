@@ -6,6 +6,7 @@ const prettier = require("prettier");
 
 // Load a collection to memory from a JSON file on disk (say, sample-collection.json)
 var collection = new Collection(JSON.parse(fs.readFileSync(process.argv[2]).toString())).toJSON();
+const web = process.argv[3] == 'web';
 var allNewClasses = [];
 
 var parentName = ''
@@ -15,8 +16,8 @@ var jsFile = `
 'use strict';
 `;
 
-jsFile += fs.readFileSync('node_modules/fasquest/index.js', 'utf8');
-
+jsFile += web ? fs.readFileSync('node_modules/fasquest/dist/index.mjs', 'utf8') : fs.readFileSync('node_modules/fasquest/index.js', 'utf8');
+jsFile.replace('var Fasquest_1=new Fasquest;export default Fasquest_1;', '');
 jsFile +=`
 const fasq = new Fasquest();
 var hostUrl = '';

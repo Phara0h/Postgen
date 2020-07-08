@@ -1,14 +1,14 @@
 # Fasquest
-A fast node request model, works very similar to `request` module but way faster and no dependencies.
+A fast node request model, works very similar to `request` module but way faster and no dependencies + it works in the browser!
 
 ### Install
 ```
 npm install fasquest
 ```
 
-### Basic Example
+### Basic Node Example
 ```js
-const fasquest = require('fasquest');
+const Fasquest = require('fasquest');
 
 var options = {
   uri: 'http://127.0.0.1/',
@@ -16,9 +16,23 @@ var options = {
   json: true
 }
 
-fasquest.request(options).then(res=>{
+Fasquest.request(options).then(res=>{
   console.log('hey look I got a response')
 })
+
+
+```
+
+### Basic Web Example
+```js
+import Fasquest from "fasquest";
+var options = {
+  uri: 'http://127.0.0.1/',
+  resolveWithFullResponse: true,
+  json: true
+}
+
+await Fasquest.request(options);
 
 
 ```

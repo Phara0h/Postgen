@@ -16,10 +16,16 @@ npm install -g postgen
 ```
 npm install --save fasquest
 ```
-* Run postgen
+* Run postgen for node SDK generation
 ```
 postgen /path/to/postman/collection.js > YourApi.js
 ```
+
+* Run postgen for web SDK generation
+```
+postgen /path/to/postman/collection.js web > YourApi.js
+```
+
 * View the examples on how to use your newly generated lib.
 
 ## Examples
