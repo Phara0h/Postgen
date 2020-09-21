@@ -212,7 +212,7 @@ if(urlVars.length > 0) {
   `
   * @example
   * body
-  * \`\`\`js
+  * \`\`\`${body.options.raw.language}
   * `
   docs += body.raw.replace(/\n/g, '\n * ');
   docs += '\n  * ```';
@@ -235,7 +235,7 @@ var convertToOptions = function (request)
   var body = request.body;
   if(body) {
     if(body.mode == 'raw') {
-       body = 'body'
+       body = `body${body.options.raw.language == 'json' ? ',json:true' : ''}`
     }
     else if(body.mode == 'urlencoded') {
       body = `form: {
