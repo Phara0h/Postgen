@@ -214,7 +214,7 @@ if(urlVars.length > 0) {
   * body
   * \`\`\`js
   * `
-  docs += beautify(body.raw,{format: 'json'}).replace(/\n/g, '\n * ');
+  docs += body.raw.replace(/\n/g, '\n * ');
   docs += '\n  * ```';
     }
     else if(body.mode == 'urlencoded') {
