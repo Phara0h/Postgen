@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v4.2.0](https://github.com/Phara0h/Postgen/compare/v4.1.5...v4.2.0)
+
+> 21 September 2020
+
+- Fixed depend issue [`8d5c637`](https://github.com/Phara0h/Postgen/commit/8d5c6375d3f964d1a4c5df865e57465e571a13d9)
+
 #### [v4.1.5](https://github.com/Phara0h/Postgen/compare/v4.1.4...v4.1.5)
 
 > 8 July 2020
