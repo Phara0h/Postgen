@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v4.4.0](https://github.com/Phara0h/Postgen/compare/v4.3.0...v4.4.0)
+
+> 22 September 2020
+
+- Added defaultOpts param on require function and added example docs for init [`9a2e5a4`](https://github.com/Phara0h/Postgen/commit/9a2e5a434e9ee3d572c351b9da8ac8fd66328de9)
+
 #### [v4.3.0](https://github.com/Phara0h/Postgen/compare/v4.2.0...v4.3.0)
 
 > 21 September 2020
