@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v4.4.1](https://github.com/Phara0h/Postgen/compare/v4.4.0...v4.4.1)
+
+> 22 September 2020
+
+- Fixed typo [`546fb4f`](https://github.com/Phara0h/Postgen/commit/546fb4fe310181eb2e1a7aed0fb9d19003225d44)
+
 #### [v4.4.0](https://github.com/Phara0h/Postgen/compare/v4.3.0...v4.4.0)
 
 > 22 September 2020
