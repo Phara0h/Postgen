@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v4.4.2](https://github.com/Phara0h/Postgen/compare/v4.4.1...v4.4.2)
+
+> 22 September 2020
+
+- Fixed jsdocs to gen right for init [`ed4dedd`](https://github.com/Phara0h/Postgen/commit/ed4deddd531adb67958073e6c05bc77b2b5554d3)
+
 #### [v4.4.1](https://github.com/Phara0h/Postgen/compare/v4.4.0...v4.4.1)
 
 > 22 September 2020
