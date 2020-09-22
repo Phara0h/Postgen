@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "auto-changelog": "^1.16.1",
-    "fasquest": "^2.0.2",
+    "fasquest": "^2.4.0",
     "postman-collection": "^3.5.1",
     "prettier": "^2.0.5"
   }
