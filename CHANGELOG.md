@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v4.5.0](https://github.com/Phara0h/Postgen/compare/v4.4.2...v4.5.0)
+
+> 22 September 2020
+
+- Updated fasquest [`597b2c5`](https://github.com/Phara0h/Postgen/commit/597b2c538b72bdb487f23c3018134d818d627519)
+
 #### [v4.4.2](https://github.com/Phara0h/Postgen/compare/v4.4.1...v4.4.2)
 
 > 22 September 2020
