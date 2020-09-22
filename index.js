@@ -21,6 +21,7 @@ jsFile.replace('var Fasquest_1=new Fasquest;export default Fasquest_1;', '');
 jsFile +=`
 const fasq = new Fasquest();
 var hostUrl = '';
+var defaultOpts = null;
 `
 
 
@@ -344,6 +345,9 @@ class ${setClassName(name, parent)} {
           ${getDocs(item[i].name,item[i].request.description ? item[i].request.description.content : '', item[i].request.url, item[i].request.body, item[i].request.header || [])}
           static async ${setMethodName(item[i].name)}(${getVars(item[i].request.url, item[i].request.body, item[i].request.header || [])}) {
               var options = ${convertToOptions(item[i].request)};
+              if(defaultOpts) {
+                options = Object.assign(options, defaultOpts);
+              }
               if(opts) {
                 options = Object.assign(options, opts);
               }
@@ -388,11 +392,28 @@ parentName = collection.info.name;
 
 jsFile += genClass(collection.info.name, collection.item, '', collection.info)
 
+jsfile += `
+/**
+  * SDK - importing the SDK for use
+  * @param {string} host the hostname to the service (example: http://127.0.0.1)
+  * @param {object} opts options that will be appened to every request. [Fasquest Lib Options](https://github.com/Phara0h/Fasquest) (example: {headers: {'API-KEY':'34098hodf'}})`
+
+
 if(web) {
 jsFile += `
-  export default function(host){
+  * @example
+  * init
+  * \`\`\`js
+  * import sdk from './sdk.mjs';
+  * const ${setClassName(collection.info.name, collection.info)} = sdk('http://127.0.0.1');
+  * \`\`\`
+  */
+  export default function(host, opts){
     if(host) {
       hostUrl = host;
+    }
+    if(opts) {
+      defaultOpts = opts;
     }
     return {${allNewClasses.join()}};
   }
@@ -400,9 +421,18 @@ jsFile += `
 }
 else {
 jsFile += `
-  module.exports= function(host){
+  * @example
+  * init
+  * \`\`\`js
+  * const { ${setClassName(collection.info.name, collection.info)} } = require('./sdk.js')('http://127.0.0.1');
+  * \`\`\`
+  */
+  module.exports= function(host, opts){
     if(host) {
       hostUrl = host;
+    }
+    if(opts) {
+      defaultOpts = opts;
     }
     return {${allNewClasses.join()}};
   }
