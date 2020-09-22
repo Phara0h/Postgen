@@ -392,7 +392,7 @@ parentName = collection.info.name;
 
 jsFile += genClass(collection.info.name, collection.item, '', collection.info)
 
-jsfile += `
+jsFile += `
 /**
   * SDK - importing the SDK for use
   * @param {string} host the hostname to the service (example: http://127.0.0.1)
