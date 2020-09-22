@@ -405,10 +405,10 @@ jsFile += `
   * init
   * \`\`\`js
   * import sdk from './sdk.mjs';
-  * const ${setClassName(collection.info.name, collection.info)} = sdk('http://127.0.0.1');
+  * const ${setClassName(collection.info.name)} = sdk('http://127.0.0.1');
   * \`\`\`
   */
-  export default function(host, opts){
+  function SDK (host, opts){
     if(host) {
       hostUrl = host;
     }
@@ -417,6 +417,7 @@ jsFile += `
     }
     return {${allNewClasses.join()}};
   }
+  export default SDK;
 `
 }
 else {
@@ -424,10 +425,10 @@ jsFile += `
   * @example
   * init
   * \`\`\`js
-  * const { ${setClassName(collection.info.name, collection.info)} } = require('./sdk.js')('http://127.0.0.1');
+  * const { ${setClassName(collection.info.name)} } = require('./sdk.js')('http://127.0.0.1');
   * \`\`\`
   */
-  module.exports= function(host, opts){
+  function SDK (host, opts){
     if(host) {
       hostUrl = host;
     }
@@ -436,6 +437,7 @@ jsFile += `
     }
     return {${allNewClasses.join()}};
   }
+  module.exports = SDK;
 `
 }
 
