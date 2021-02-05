@@ -84,6 +84,7 @@ var getVars = function (url, body, headers = [])
 
   var urlVars = Array.from(url.variable.map(v => v.key.length > 0 ? v.key : null)).filter(v=>v);
   if(urlVars.length > 0) {
+    //console.log(urlVars)
     vars = [...vars, ...urlVars];
   }
 
@@ -213,7 +214,7 @@ if(urlVars.length > 0) {
   `
   * @example
   * body
-  * \`\`\`${body.options.raw.language}
+  * \`\`\`${body.options ? body.options.raw.language : ''}
   * `
   docs += body.raw.replace(/\n/g, '\n * ');
   docs += '\n  * ```';
@@ -236,7 +237,7 @@ var convertToOptions = function (request)
   var body = request.body;
   if(body) {
     if(body.mode == 'raw') {
-       body = `body${body.options.raw.language == 'json' ? ',json:true' : ''}`
+       body = `body${body.options && body.options.raw.language == 'json' ? ',json:true' : ''}`
     }
     else if(body.mode == 'urlencoded') {
       body = `form: {
@@ -261,13 +262,13 @@ var convertToOptions = function (request)
 var setMethodName = function (n)
 {
   var mn = '' + n
-  return toCamel(mn.replace(/:/g, '').replace(/[ \/-]/g, '_').toLowerCase())
+  return toCamel(mn.replace(/[\:\'\)\(]/g, '').replace(/[ \/\-]/g, '_').toLowerCase())
 }
 
 var setClassName = function (n, parent)
 {
   var cn = (parent && parent != parentName ? parent+' ' : '') + n.charAt(0).toUpperCase() + n.slice(1);
-  var name = toCamel(cn.replace(/ /g, '_').toLowerCase())
+  var name = toCamel(cn.replace(/[\'\)\(]/g, '').replace(/ /g, '_').toLowerCase())
   return name.charAt(0).toUpperCase() + name.slice(1);
 }
 const toCamel = (s) =>
@@ -339,21 +340,28 @@ class ${setClassName(name, parent)} {
 
     if (!item[i].item)
     {
-      getPathObject += `${setMethodName(item[i].name).toLowerCase()}:'${item[i].request.url.path.join('/')}',`
-      //console.log(item[i])
-      classFunctions += `
-          ${getDocs(item[i].name,item[i].request.description ? item[i].request.description.content : '', item[i].request.url, item[i].request.body, item[i].request.header || [])}
-          static async ${setMethodName(item[i].name)}(${getVars(item[i].request.url, item[i].request.body, item[i].request.header || [])}) {
-              var options = ${convertToOptions(item[i].request)};
-              if(defaultOpts) {
-                options = Object.assign(options, defaultOpts);
-              }
-              if(opts) {
-                options = Object.assign(options, opts);
-              }
-              return await fasq.request(options)
-          }
-      `;
+      try {
+        getPathObject += `${setMethodName(item[i].name).toLowerCase()}:'${item[i].request.url.path.join('/')}',`
+        //console.log(item[i])
+        classFunctions += `
+            ${getDocs(item[i].name,item[i].request.description ? item[i].request.description.content : '', item[i].request.url, item[i].request.body, item[i].request.header || [])}
+            static async ${setMethodName(item[i].name)}(${getVars(item[i].request.url, item[i].request.body, item[i].request.header || [])}) {
+                var options = ${convertToOptions(item[i].request)};
+                if(defaultOpts) {
+                  options = Object.assign(options, defaultOpts);
+                }
+                if(opts) {
+                  options = Object.assign(options, opts);
+                }
+                return await fasq.request(options)
+            }
+        `;
+      } catch (e) {
+
+      } finally {
+
+      }
+
 
 
     }
