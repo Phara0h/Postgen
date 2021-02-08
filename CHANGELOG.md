@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v4.6.3](https://github.com/Phara0h/Postgen/compare/v4.6.2...v4.6.3)
+
+> 8 February 2021
+
+- Update package.json [`3fac3b4`](https://github.com/Phara0h/Postgen/commit/3fac3b4eea7a2d0b851a9187fae0e58befe22e7b)
+
 #### [v4.6.2](https://github.com/Phara0h/Postgen/compare/v4.6.0...v4.6.2)
 
 > 5 February 2021
