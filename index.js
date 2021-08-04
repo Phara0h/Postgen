@@ -11,20 +11,13 @@ var allNewClasses = [];
 
 var parentName = ''
 
-
 var jsFile = `
 'use strict';
 `;
 
 jsFile += web ? fs.readFileSync('node_modules/fasquest/dist/index.mjs', 'utf8') : fs.readFileSync('node_modules/fasquest/index.js', 'utf8');
 jsFile.replace('var Fasquest_1=new Fasquest;export default Fasquest_1;', '');
-jsFile +=`
-const fasq = new Fasquest();
-var hostUrl = '';
-var defaultOpts = null;
-`
-
-
+parentName = collection.info.name;
 var parseHeader = function (body,header = [])
 {
   var params = body.length > 0 ? ',' : '';
@@ -230,8 +223,6 @@ if(urlVars.length > 0) {
   return  docs;
 }
 
-
-//
 var convertToOptions = function (request)
 {
   var body = request.body;
@@ -337,12 +328,12 @@ class ${setClassName(name, parent)} {
   var classFunctions = '';
   for (var i = item.length - 1; i >= 0; i--)
   {
-
     if (!item[i].item)
     {
       try {
         getPathObject += `${setMethodName(item[i].name).toLowerCase()}:'${item[i].request.url.path.join('/')}',`
         //console.log(item[i])
+
         classFunctions += `
             ${getDocs(item[i].name,item[i].request.description ? item[i].request.description.content : '', item[i].request.url, item[i].request.body, item[i].request.header || [])}
             static async ${setMethodName(item[i].name)}(${getVars(item[i].request.url, item[i].request.body, item[i].request.header || [])}) {
@@ -358,12 +349,7 @@ class ${setClassName(name, parent)} {
         `;
       } catch (e) {
 
-      } finally {
-
-      }
-
-
-
+      } 
     }
     else
     {
@@ -396,17 +382,12 @@ class ${setClassName(name, parent)} {
 
 }
 
-parentName = collection.info.name;
-
-jsFile += genClass(collection.info.name, collection.item, '', collection.info)
 
 jsFile += `
 /**
   * SDK - importing the SDK for use
   * @param {string} host the hostname to the service (example: http://127.0.0.1)
   * @param {object} opts options that will be appened to every request. [Fasquest Lib Options](https://github.com/Phara0h/Fasquest) (example: {headers: {'API-KEY':'34098hodf'}})`
-
-
 if(web) {
 jsFile += `
   * @example
@@ -415,14 +396,36 @@ jsFile += `
   * import sdk from './sdk.mjs';
   * const ${setClassName(collection.info.name)} = sdk('http://127.0.0.1');
   * \`\`\`
-  */
-  function SDK (host, opts){
-    if(host) {
-      hostUrl = host;
-    }
-    if(opts) {
-      defaultOpts = opts;
-    }
+*/`
+} else {
+jsFile += `
+  * @example
+  * init
+  * \`\`\`js
+  * const { ${setClassName(collection.info.name)} } = require('./sdk.js')('http://127.0.0.1');
+  * \`\`\`
+*/`
+}
+jsFile +=`
+function SDK (host, opts) {
+  var hostUrl = '';
+  var defaultOpts = null;
+
+  if (host) {
+    hostUrl = host;
+  }
+  if (opts) {
+    defaultOpts = opts;
+  }
+  const fasq = new Fasquest();
+
+`
+
+jsFile += genClass(collection.info.name, collection.item, '', collection.info)
+
+if(web) {
+jsFile += `
+
     return {${allNewClasses.join()}};
   }
   export default SDK;
@@ -430,25 +433,12 @@ jsFile += `
 }
 else {
 jsFile += `
-  * @example
-  * init
-  * \`\`\`js
-  * const { ${setClassName(collection.info.name)} } = require('./sdk.js')('http://127.0.0.1');
-  * \`\`\`
-  */
-  function SDK (host, opts){
-    if(host) {
-      hostUrl = host;
-    }
-    if(opts) {
-      defaultOpts = opts;
-    }
+
     return {${allNewClasses.join()}};
   }
   module.exports = SDK;
 `
 }
-
 
 console.log(prettier.format(jsFile, {
   tabWidth: 2,
