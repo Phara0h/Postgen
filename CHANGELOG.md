@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+### [v5.0.0](https://github.com/Phara0h/Postgen/compare/v4.6.5...v5.0.0)
+
+> 4 August 2021
+
+- Updated postman lib, vuln fixes and isolated code [`965908d`](https://github.com/Phara0h/Postgen/commit/965908dc60ea481f9a0ad24019dc064e06f0ee43)
+
 #### [v4.6.5](https://github.com/Phara0h/Postgen/compare/v4.6.4...v4.6.5)
 
 > 19 May 2021
