@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v5.0.1](https://github.com/Phara0h/Postgen/compare/v5.0.0...v5.0.1)
+
+> 12 September 2023
+
+- fixed bug with double export for web [`2429319`](https://github.com/Phara0h/Postgen/commit/2429319ecaecf47edc8bb08471879ea44bbb9360)
+
 ### [v5.0.0](https://github.com/Phara0h/Postgen/compare/v4.6.5...v5.0.0)
 
 > 4 August 2021
