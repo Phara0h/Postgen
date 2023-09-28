@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v5.0.3](https://github.com/Phara0h/Postgen/compare/v5.0.2...v5.0.3)
+
+> 28 September 2023
+
+- Updated fastquest version [`3dc6211`](https://github.com/Phara0h/Postgen/commit/3dc6211f58c1381d069473b1d81c9a6302e1aa2e)
+
+#### [v5.0.2](https://github.com/Phara0h/Postgen/compare/v5.0.1...v5.0.2)
+
+> 12 September 2023
+
 #### [v5.0.1](https://github.com/Phara0h/Postgen/compare/v5.0.0...v5.0.1)
 
 > 12 September 2023
