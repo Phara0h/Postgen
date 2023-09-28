@@ -16,7 +16,7 @@ var jsFile = `
 `;
 
 jsFile += web ? fs.readFileSync('node_modules/fasquest/dist/index.mjs', 'utf8') : fs.readFileSync('node_modules/fasquest/index.js', 'utf8');
-jsFile = jsFile.replace('var Fasquest_1=new Fasquest;export default Fasquest_1;', '');
+jsFile = jsFile.replace('var Fasquest_1=new Fasquest;export{Fasquest_1 as default};', '');
 parentName = collection.info.name;
 var parseHeader = function (body,header = [])
 {
