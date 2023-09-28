@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v5.0.4](https://github.com/Phara0h/Postgen/compare/v5.0.3...v5.0.4)
+
+> 28 September 2023
+
+- Update index.js [`40e8f92`](https://github.com/Phara0h/Postgen/commit/40e8f92384eb5ac74081026d2d4f6c73d079d8cd)
+
 #### [v5.0.3](https://github.com/Phara0h/Postgen/compare/v5.0.2...v5.0.3)
 
 > 28 September 2023
